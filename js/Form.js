@@ -37,6 +37,9 @@ class Form {
         this.reset.mousePressed(() => {
             player.updateCount(0);
             game.update(0);
+            database.ref('players').set({
+                players:null
+            })
         });
 
     }

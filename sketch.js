@@ -8,12 +8,12 @@ var database;
 
 var form, player, game;
 
-var runner1,runners;
+var runner1,runners,obstacleGroup;
 
 var track, runner1_img, hurdle, invisibleGround;
 
 function preload() {
-    hurdle = loadImage("../images/hurdle.png");
+    hurdle = loadImage("../images/hurdle1.png");
     track = loadImage("../images/123.jpg");
     runner1_img = loadAnimation("b.png", "p.png", "y.png");
     
@@ -25,6 +25,7 @@ function setup() {
     game = new Game();
     game.getState();
     game.start();
+    obstacleGroup= new Group()
 }
 
 
@@ -38,6 +39,9 @@ function draw() {
     }
     if (gameState === 2) {
         game.end();
+    }
+    if(gameState === 3){
+        game.lost()
     }
    
 }

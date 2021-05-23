@@ -80,7 +80,7 @@ class Game {
                     // console.log("yes")
                     stroke(10);
                     fill("red");
-                    ellipse(x, y, 60, 60);
+                   // ellipse(x, y, 60, 60);
                     runners[index - 1].shapeColor = "red";
                     camera.position.x = runners[index - 1].x;
                     camera.position.y = runners[index - 1].y;
@@ -90,8 +90,11 @@ class Game {
 
                     if (keyDown("space")) {
                        
-                        runners[index - 1].y -= 50;
+                        runners[index - 1].y -= 150;
 
+                    }
+                    if(runners[index - 1].isTouching(obstacleGroup)){
+                        gameState= 3
                     }
                 
 
@@ -131,21 +134,25 @@ class Game {
         alert("Game Ended And Rank is : "+player.rank);
         
     }
+    lost(){
+        alert("You Lost..Play again")
+    }
    
 }
 
 function spawnObstacles() {
     var i = 0;
-    if (frameCount % 300 === 0) {
+    if (frameCount % 70 === 0) {
         i = i + 1000
-        var obstacle = createSprite(4000, 425);
-
-        obstacle.velocityX = -4;
+        var obstacle = createSprite(random(displayWidth*4,200), 450);
+        obstacle.debug= true
+        // obstacle.velocityX = -4;
         obstacle.addImage(hurdle);
 
         obstacle.scale = 0.80;
-        obstacle.lifetime = 800;
-        obstacle.setCollider("rectangle", -10, 0, 90, 150);
+        obstacle.lifetime = displayWidth;
+        obstacle.setCollider("rectangle", 50, -30, 50, 90);
+        obstacleGroup.add(obstacle)
         
     }
 }
