@@ -13,8 +13,8 @@ var runner1,runners,obstacleGroup;
 var track, runner1_img, hurdle, invisibleGround;
 
 function preload() {
-    hurdle = loadImage("/images/hurdle1.png");
-    track = loadImage("/images/123.jpg");
+    hurdle = loadImage("./images/hurdle1.png");
+    track = loadImage("./images/123.jpg");
     runner1_img = loadAnimation("b.png", "p.png", "y.png");
     
 }
